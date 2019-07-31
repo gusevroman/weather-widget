@@ -15,7 +15,7 @@
 - еще ниже таблица
 
 ### Функциональность ###
-- Input + Button = вводим название города и по нажатию на кнопку или Enter отправляем запрос на https://openweathermap.org/ 
+- Input + Button = вводим название города и по нажатию на кнопку или Enter отправляем запрос на https://openweathermap.org 
 - Когда получаешь данные, присваиваешь каждой записи статус ACTIVE и порядок сортировки (положение в таблице)
 - Получаем ответ, кладем его в стор, и отображаем в таблице
 
@@ -54,7 +54,7 @@
 ### Backend API ###
 - документация по backend находится [здесь](https://openweathermap.org/)   .
 
-:arrow_up: [Оглавление](#table_of_contents)    
+:arrow_up: [Оглавление](#table_of_contents)<br> 
 
 <a name="ru_stack"></a>
 ## Стэк технологий ##
@@ -70,7 +70,7 @@
           
 Этот проект на [GitHub](https://github.com/Legmo/weather_widget).
    
-:arrow_up: [Оглавление](#table_of_contents)    
+:arrow_up: [Оглавление](#table_of_contents)<br>   
 
 <a name="ru_commands"></a>
 ## Основные команды консоли ##
@@ -99,7 +99,4 @@
 Более подробную информацию вы можете получить здесь [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).<br>
 Изучение React стоит начать с [документации React](https://ru.reactjs.org/).
    
-
-:arrow_up: [Оглавление](#table_of_contents)    
-
-<br/>
+:arrow_up: [Оглавление](#table_of_contents)<br/>
