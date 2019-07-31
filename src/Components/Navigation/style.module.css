@@ -1,0 +1,8 @@
+.nav_parent a {
+  outline: none;
+}
+.nav_parent a.active {
+  color: black !important;
+  text-decoration: none;
+  cursor: default;
+}
