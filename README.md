@@ -4,7 +4,7 @@
 ## Оглавление ##
 - [Техническое задание](#ru_task)
 - [Стэк технологий](#ru_stack)
-- [Основные команды консоли](#ru_commands)
+- [Основные команды консоли](#ru_commands)<br><br>
 
 
 <a name="ru_task"></a>
@@ -61,7 +61,7 @@
 - [React JS 16.8.6](https://ru.reactjs.org/)
 - [Create React App 3.0.1](https://github.com/facebook/create-react-app)
 - [Redux 4.0.4](https://redux.js.org/)
-- [React-Redux 7.1](https://react-redux.js.org/)
+- [React-Redux 7.1](https://github.com/reduxjs/react-redux/)
 - [React Router 5.0.1](https://github.com/ReactTraining/react-router)
 - [Redux-modal 3.0.0](https://github.com/yesmeck/redux-modal) 
 - [Reactstrap 8.0.1](https://www.npmjs.com/package/reactstrap)
