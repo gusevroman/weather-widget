@@ -70,8 +70,8 @@
 - [React Router 5.0.1](https://github.com/ReactTraining/react-router)
 - [Redux-modal 3.0.0](https://github.com/yesmeck/redux-modal) 
 - [Reactstrap 8.0.1](https://www.npmjs.com/package/reactstrap)
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
-- [Axios](https://github.com/axios/axios#readme)
+- [Redux Thunk 2.3.0](https://github.com/reduxjs/redux-thunk)
+- [Axios 0.19.0](https://github.com/axios/axios#readme)
           
 Этот проект на [GitHub](https://github.com/Legmo/weather_widget).
    

@@ -5,11 +5,8 @@ import {
 } from 'react-router-dom';
 import FormTop from '../Form/Form';
 import Navigation from '../Navigation/Navigation';
-import Table from '../Table/Form';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
-
+import Table from '../Table/Table';
 import style from './style.module.css';
-import Provider from "react-redux/es/components/Provider";
 
 function App() {
   return (

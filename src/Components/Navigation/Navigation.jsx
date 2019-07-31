@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import style from './style.module.css';
 
 const Navigation = (props) => {
+  console.log(props);
+
   return (
     <div className={`${style.nav_parent} mt-3`}>
       <NavLink

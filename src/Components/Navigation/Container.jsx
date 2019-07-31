@@ -2,7 +2,9 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import Navigation from './Navigation';
 
-const mapStateToProps = state => ({ });
+const mapStateToProps = state => ({
+  records: state,
+});
 const NavigationContainer = connect(mapStateToProps, {})(Navigation);
 
 export default NavigationContainer;
