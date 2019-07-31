@@ -54,7 +54,7 @@
 ### Backend API ###
 - документация по backend находится [здесь](https://openweathermap.org/)   .
 
-:arrow_up: [Оглавление](#table_of_contents)<br> 
+:arrow_up: [Оглавление](#table_of_contents)<br><br> 
 
 <a name="ru_stack"></a>
 ## Стэк технологий ##
@@ -70,7 +70,7 @@
           
 Этот проект на [GitHub](https://github.com/Legmo/weather_widget).
    
-:arrow_up: [Оглавление](#table_of_contents)<br>   
+:arrow_up: [Оглавление](#table_of_contents)<br><br>   
 
 <a name="ru_commands"></a>
 ## Основные команды консоли ##
@@ -99,4 +99,4 @@
 Более подробную информацию вы можете получить здесь [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).<br>
 Изучение React стоит начать с [документации React](https://ru.reactjs.org/).
    
-:arrow_up: [Оглавление](#table_of_contents)<br/>
+:arrow_up: [Оглавление](#table_of_contents)<br><br>
