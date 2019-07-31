@@ -1,9 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import {
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import FormTop from '../Form/Form';
 import Navigation from '../Navigation/Navigation';
 import Table from '../Table/Form';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+
 import style from './style.module.css';
+import Provider from "react-redux/es/components/Provider";
 
 function App() {
   return (
@@ -18,6 +24,7 @@ function App() {
                 <Navigation />
               </header>
               <section>
+                <Redirect from="/" to="/all" />
                 <Table />
               </section>
             </div>
