@@ -1,30 +1,48 @@
 import React from 'react';
 import {
-  Button,
+  Button, Form,
 } from 'reactstrap';
 
 const ModalStatus = (props) => {
-  const city = 'Тестовый город';
-  const stringDelete = `Удалить ${city} из списка?`;
-  const stringActivate = `Восстановить ${city} в общем списке?`;
-  let stringFinal;
-  const buttonTextDelete = 'Удалить';
-  const buttonTextActivate = 'Восстановить';
-  let buttonTextFinal;
+  const updateStatusRecord = (event) => {
+    const { id:recordStatus } = event.target;
+    console.log(recordStatus);
+    props.updateStatusRecord(recordStatus);
+  };
 
-  if (true) {
-    stringFinal = stringDelete;
-    buttonTextFinal = buttonTextDelete;
+  const city = 'Тестовый город';
+  let stringFinal;
+  let buttonTextFinal;
+  let buttonСolor;
+  let buttonId;
+  const { actualPath:path } = props.other;
+
+  if (path === 'deleted') {
+    stringFinal = `Восстановить ${city} в общем списке?`;
+    buttonTextFinal = 'Восстановить';
+    buttonСolor = 'success';
+    buttonId = 'active';
   } else {
-    stringFinal = stringActivate;
-    buttonTextFinal = buttonTextActivate;
+    stringFinal = `Удалить ${city} из списка?`;
+    buttonTextFinal = 'Удалить';
+    buttonСolor = 'danger';
+    buttonId = 'deleted';
   }
 
   return (
     <>
       <h4>Модальное окно 1</h4>
-      <p>{stringFinal}</p>
-      <Button>{buttonTextFinal}</Button>
+      <div className="border border-primary rounded py-4 px-4">
+        <p>{stringFinal}</p>
+        <Button
+          outline
+          id={buttonId}
+          onClick={updateStatusRecord}
+          color={buttonСolor}
+        >
+          {buttonTextFinal}
+        </Button>
+      </div>
     </>
   );
 };

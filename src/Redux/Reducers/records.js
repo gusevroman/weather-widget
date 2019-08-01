@@ -50,7 +50,7 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_STATUS_RECORD: {
-      console.log('Status');
+      console.log(`New status: ${action.recordStatus}`);
       return {
         ...state,
       };
