@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import {
   toggleIsFetching,
   changePositionRecord,
-  updateStatusRecord,
-  updateTemperature,
-  updateCity,
   upRowRecord,
   downRowRecord,
 } from '../../Redux/Actions/records';
@@ -22,9 +19,6 @@ const mapStateToProps = state => ({
 const TableContainer = connect(mapStateToProps, {
   toggleIsFetching,
   changePositionRecord,
-  updateStatusRecord,
-  updateTemperature,
-  updateCity,
   upRowRecord,
   downRowRecord,
   show,
