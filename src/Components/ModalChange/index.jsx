@@ -13,17 +13,19 @@ const ModalChange = (props) => {
   const temperatureInputModal = 'Тестовая температура';
 
   const updateCity = (city) => {
-    const { id:recordStatus } = event.target;
+    // const { id:recordStatus } = event.target;
     console.log(`Новый город: ${city}`);
     props.updateCity(city);
   };
   const updateTemperature = (temperature) => {
-    const { id:recordStatus } = event.target;
+    // const { id:recordStatus } = event.target;
     console.log(`Новая температура: ${temperature}`);
     props.updateTemperature(temperature);
   };
-  const changeRecord = (event) => {
+
+  const recordChangesSubmit = (event) => {
     event.preventDefault();
+    /*
     const { city }        = this.props.records;
     const { temperature } = this.props.records;
     if (true) {
@@ -32,6 +34,7 @@ const ModalChange = (props) => {
     if (true) {
       updateTemperature(temperature);
     }
+    */
   };
 
   return (
