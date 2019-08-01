@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import recordsReducer from './records';
+import modal from './modal';
+import records from './records';
 
 const reducers = combineReducers({
-  records: recordsReducer,
+  records,
+  modal,
 });
 
 export default reducers;

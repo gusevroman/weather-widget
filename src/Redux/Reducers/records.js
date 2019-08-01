@@ -4,24 +4,32 @@ import {
   UPDATE_STATUS_RECORD,
   UPDATE_TEMPERATURE,
   UPDATE_CITY,
-} from '../Actions';
+  UP_ROW_RECORD,
+  DOWN_ROW_RECORD,
+} from '../Actions/records';
 
 const initialState = {
   records: [
     {
-      city:     'Test A',
-      weather:  'Weather test A',
-      position: 1,
+      city:        'Test A',
+      temperature: 'Temperature test A',
+      isActive:    true,
+      position:    0,
+      id:          1,
     },
     {
-      city:     'Test B',
-      weather:  'Weather test B',
-      position: 2,
+      city:        'Test B',
+      temperature: 'Temperature test B',
+      isActive:    false,
+      position:    1,
+      id:          2,
     },
     {
-      city:     'Test C',
-      weather:  'Weather test C',
-      position: 3,
+      city:        'Test C',
+      temperature: 'Temperature test C',
+      isActive:    true,
+      position:    2,
+      id:          3,
     },
   ],
   recordsCount: 0,
@@ -42,6 +50,7 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_STATUS_RECORD: {
+      console.log('Status');
       return {
         ...state,
       };
@@ -52,6 +61,18 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_CITY: {
+      return {
+        ...state,
+      };
+    }
+    case UP_ROW_RECORD: {
+      console.log('UP');
+      return {
+        ...state,
+      };
+    }
+    case DOWN_ROW_RECORD: {
+      console.log('DOWN');
       return {
         ...state,
       };
