@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Button,
-  Form,
 } from 'reactstrap';
 
 const ModalStatus = (props) => {
@@ -23,6 +22,7 @@ const ModalStatus = (props) => {
 
   return (
     <>
+      <h4>Модальное окно 1</h4>
       <p>{stringFinal}</p>
       <Button>{buttonTextFinal}</Button>
     </>
