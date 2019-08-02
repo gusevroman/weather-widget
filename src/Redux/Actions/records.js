@@ -15,10 +15,10 @@ export const changePositionRecord = (recordPosition, direction) => ({
   recordPosition,
   direction,
 });
-export const updateStatusRecord   = (recordStatus, id) => ({
+export const updateStatusRecord   = (recordStatus, activeRecordIndex) => ({
   type: UPDATE_STATUS_RECORD,
   recordStatus,
-  id,
+  activeRecordIndex,
 });
 export const updateTemperature    = (temperature, id) => ({
   type: UPDATE_TEMPERATURE,

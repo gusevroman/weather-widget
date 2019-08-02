@@ -50,11 +50,23 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_STATUS_RECORD: {
-      console.log(`Record ID: ${action.id}`);
-      console.log(`New status: ${action.recordStatus}`);
-      return {
+      const index = action.activeRecordIndex;
+      let isActive = true;
+      if (action.recordStatus === 'deleted') {
+        isActive = false;
+      }
+      console.log(`Record index: ${index}`);
+      console.log(`New status is active? ${isActive}`);
+
+      const stateCopy = {
         ...state,
+        records: [
+          ...state.records,
+        ],
       };
+      stateCopy.records[index].isActive = isActive;
+
+      return stateCopy;
     }
     case UPDATE_TEMPERATURE: {
       console.log(`Record ID: ${action.id}`);

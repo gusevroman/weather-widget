@@ -7,15 +7,18 @@ const ModalStatus = (props) => {
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
     // const { id:recordStatus } = event.target;
-    const { activeRecordId:id } = props.modals;
-    props.updateStatusRecord(status, id);
+    const { activeRecordId:activeID } = props.modals;
+    let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
+    props.updateStatusRecord(status, activeRecordIndex);
   };
 
   let activeID = props.modals.activeRecordId;
   let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
-  let city = '';
+  let isActive;
+  let city;
   if (activeRecordIndex >= 0) {
     city = props.records.records[activeRecordIndex].city;
+    isActive = props.records.records[activeRecordIndex].isActive;
   }
 
   let stringFinal;
@@ -24,16 +27,16 @@ const ModalStatus = (props) => {
   let newRecordStatus;
   const { actualPath:path } = props.other;
 
-  if (path === 'deleted') {
-    stringFinal = `Восстановить ${city} в общем списке?`;
-    buttonTextFinal = 'Восстановить';
-    buttonСolor = 'success';
-    newRecordStatus = 'active';
-  } else {
+  if ((activeRecordIndex >= 0) && isActive) {
     stringFinal = `Удалить ${city} из списка?`;
     buttonTextFinal = 'Удалить';
     buttonСolor = 'danger';
     newRecordStatus = 'deleted';
+  } else {
+    stringFinal = `Восстановить ${city} в общем списке?`;
+    buttonTextFinal = 'Восстановить';
+    buttonСolor = 'success';
+    newRecordStatus = 'active';
   }
 
   return (
