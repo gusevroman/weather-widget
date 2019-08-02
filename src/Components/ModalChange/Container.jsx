@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
-import ModalChange from './index';
+import ModalChange from './ModalChange';
 import {
   toggleIsFetching,
   updateTemperature,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   pathChange,
 } from '../../Redux/Actions/other';
-import Navigation from './index';
+import Navigation from './Navigation';
 
 const mapStateToProps = state => ({
   other: state.other,

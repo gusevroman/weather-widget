@@ -50,17 +50,22 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_STATUS_RECORD: {
+      console.log(`Record ID: ${action.id}`);
       console.log(`New status: ${action.recordStatus}`);
       return {
         ...state,
       };
     }
     case UPDATE_TEMPERATURE: {
+      console.log(`Record ID: ${action.id}`);
+      console.log(`New temperature: ${action.temperature}`);
       return {
         ...state,
       };
     }
     case UPDATE_CITY: {
+      console.log(`Record ID: ${action.id}`);
+      console.log(`New city: ${action.city}`);
       return {
         ...state,
       };

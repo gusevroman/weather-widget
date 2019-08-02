@@ -1,0 +1,16 @@
+.thead tr th {
+  padding: 0 8px;
+}
+.tr td {
+  padding: 8px;
+  cursor: pointer;
+}
+.tr:hover {
+  background-color: #f1f1f1;
+}
+.tr span {
+  border-bottom: 1px dashed;
+}
+.tr button {
+  margin-right: 4px;
+}

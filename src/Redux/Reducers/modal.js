@@ -4,16 +4,17 @@ import {
 } from '../Actions/modals';
 
 const initialState = {
-  modals: [],
+  modals:         [],
+  activeRecordId: -1,
 };
 
 const modalsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW: {
-      console.log('Show modal');
+      console.log(`Show modal ${action.name} for ID = ${action.id} `);
       return {
         ...state,
-        // isFetching: true,
+        activeRecordId: action.id,
       };
     }
     case HIDE: {

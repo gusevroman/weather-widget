@@ -15,17 +15,20 @@ export const changePositionRecord = (recordPosition, direction) => ({
   recordPosition,
   direction,
 });
-export const updateStatusRecord   = recordStatus => ({
+export const updateStatusRecord   = (recordStatus, id) => ({
   type: UPDATE_STATUS_RECORD,
   recordStatus,
+  id,
 });
-export const updateTemperature    = temperature => ({
+export const updateTemperature    = (temperature, id) => ({
   type: UPDATE_TEMPERATURE,
   temperature,
+  id,
 });
-export const updateCity           = city => ({
+export const updateCity           = (city, id) => ({
   type: UPDATE_CITY,
   city,
+  id,
 });
 export const upRowRecord          = id => ({
   type: UP_ROW_RECORD,

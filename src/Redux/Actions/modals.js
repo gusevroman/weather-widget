@@ -1,10 +1,10 @@
 export const SHOW = 'SHOW';
 export const HIDE = 'HIDE';
 
-export const show = (name, props) => ({
+export const show = (name, id) => ({
   type: SHOW,
   name,
-  props,
+  id,
 });
 export const hide = name => ({
   type: HIDE,

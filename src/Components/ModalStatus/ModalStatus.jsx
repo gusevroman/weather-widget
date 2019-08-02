@@ -5,28 +5,35 @@ import {
 
 const ModalStatus = (props) => {
   const updateStatusRecord = (event) => {
-    const { id:recordStatus } = event.target;
-    console.log(recordStatus);
-    props.updateStatusRecord(recordStatus);
+    const { status } = event.target.dataset;
+    // const { id:recordStatus } = event.target;
+    const { activeRecordId:id } = props.modals;
+    props.updateStatusRecord(status, id);
   };
 
-  const city = 'Тестовый город';
+  let activeID = props.modals.activeRecordId;
+  let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
+  let city = '';
+  if (activeRecordIndex >= 0) {
+    city = props.records.records[activeRecordIndex].city;
+  }
+
   let stringFinal;
   let buttonTextFinal;
   let buttonСolor;
-  let buttonId;
+  let newRecordStatus;
   const { actualPath:path } = props.other;
 
   if (path === 'deleted') {
     stringFinal = `Восстановить ${city} в общем списке?`;
     buttonTextFinal = 'Восстановить';
     buttonСolor = 'success';
-    buttonId = 'active';
+    newRecordStatus = 'active';
   } else {
     stringFinal = `Удалить ${city} из списка?`;
     buttonTextFinal = 'Удалить';
     buttonСolor = 'danger';
-    buttonId = 'deleted';
+    newRecordStatus = 'deleted';
   }
 
   return (
@@ -36,7 +43,7 @@ const ModalStatus = (props) => {
         <p>{stringFinal}</p>
         <Button
           outline
-          id={buttonId}
+          data-status={newRecordStatus}
           onClick={updateStatusRecord}
           color={buttonСolor}
         >
