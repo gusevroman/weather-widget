@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component }  from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { show } from 'redux-modal';
 import { Route } from 'react-router-dom';
 import FormTop from '../Form/Form';
 import NavigationContainer from '../Navigation/Container';
@@ -10,7 +13,17 @@ import BModal from '../BModal';
 import RModal from '../RModal';
 
 
-const App = () => (
+import { Button } from 'react-bootstrap';
+import BootstrapModal from '../BootstrapModal';
+
+
+class App extends Component {
+  handleOpen = name => () => {
+    this.props.show(name, { message: `This is a ${name} modal` })
+  };
+
+  render() {
+    return (
   <div className={style.wrapper}>
     <div className={style.content}>
       <div className="container-fluid">
@@ -41,6 +54,8 @@ const App = () => (
               <br />
               <BModal />
               <RModal />
+              <Button onClick={this.handleOpen('bootstrap')}>Redux-modal</Button>
+              <BootstrapModal />
               <br />
               <br />
               <ModalStatusContainer />
@@ -51,6 +66,9 @@ const App = () => (
       </div>
     </div>
   </div>
-);
+)}};
 
-export default App;
+export default connect(
+    null,
+    dispatch => bindActionCreators({ show }, dispatch)
+)(App)
