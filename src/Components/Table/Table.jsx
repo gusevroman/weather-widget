@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import style from './style.module.css';
 
 const Table = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const path = window.location.pathname;
   let { records: filtredRecords } = props;
@@ -17,6 +17,23 @@ const Table = (props) => {
   }
 
   const getIndex = id => props.records.findIndex(obj => (obj.id === +id));
+
+
+  const handleOpen = name => () => {
+    console.log('!!!!!');
+    props.show(name, {
+      message: `This is a ${name} modal`,
+      ttt: 'Да!',
+
+      // newRecordStatus:
+      // updateStatusRecord:
+      // buttonСolor:
+      // buttonTextFinal:
+
+
+    });
+  };
+
 
   const upRowRecord = (event) => {
     const { id } = event.target.dataset;
@@ -36,15 +53,16 @@ const Table = (props) => {
     const { id } = event.target.dataset;
     console.log(`Status. ID = ${id}`);
     props.showModal('Status', id);
+    // handleOpen('modalStatus');
+    props.show('modalStatus', {
+      message: `!!!!`,
+      // ttt: 'Да!',
+    });
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
     console.log(`Message. ID = ${id}`);
     props.showModal('Change', id);
-  };
-
-  const handleOpen = name => () => {
-    props.show(name, { message: `This is a ${name} modal` });
   };
 
   /* eslint react/jsx-one-expression-per-line: "off" */
@@ -65,8 +83,14 @@ const Table = (props) => {
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
-          <Button outline onClick={handleOpen('modalStatus')} className="ml-3">Status</Button>
-          <Button outline onClick={handleOpen('bootstrap')} className="ml-3">test 2</Button>
+          <Button
+            outline
+            key={`test-btn_${record.id}`}
+            data-id={record.id}
+            onClick={showModalStatus}
+            className="ml-3"
+          >Status
+          </Button>
         </td>
         <td
           onClick={showModalStatus}

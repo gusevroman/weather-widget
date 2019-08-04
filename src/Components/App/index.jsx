@@ -11,7 +11,6 @@ import TableContainer from '../Table/Container';
 import ModalStatusContainer from '../ModalStatus/Container';
 import ModalChangeContainer from '../ModalChange/Container';
 import style from './style.module.css';
-import BootstrapModal from '../ModalTest/BootstrapModal'; //
 import ModalStatus from '../ModalStatus/Container'; //
 
 
@@ -53,7 +52,6 @@ class App extends Component {
               {/*<Button onClick={this.handleOpen('bootstrap')}>Redux-modal</Button>
               <br />
               <br />*/}
-              <BootstrapModal />
               <ModalStatus />
               <ModalStatusContainer />
               <ModalChangeContainer />

@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connectModal } from 'redux-modal';
 
 const ModalStatus = (props) => {
+  const { show, handleHide, message, ttt } = props;
+
+  console.log(props.other);
+
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
     // const { id:recordStatus } = event.target;
@@ -38,12 +42,12 @@ const ModalStatus = (props) => {
     newRecordStatus = 'active';
   }
 
-  const { show, handleHide, message } = props;
 
   return (
     <Modal show={show} >
       <Modal.Body>
         <p>{ message }</p>
+        {/*<p>{ttt}</p>*/}
         <p>{stringFinal}</p>
       </Modal.Body>
 

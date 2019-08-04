@@ -2,7 +2,7 @@ import {
   PATH_CHANGE,
   SHOW_MODAL,
 } from '../Actions/other';
-import {SHOW} from "../Actions/modals";
+// import {SHOW} from "../Actions/modals";
 
 const initialState = {
   actualPath: 'all',
