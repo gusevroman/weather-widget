@@ -6,6 +6,9 @@ import TableContainer from '../Table/Container';
 import ModalStatusContainer from '../ModalStatus/Container';
 import ModalChangeContainer from '../ModalChange/Container';
 import style from './style.module.css';
+import BModal from '../BModal';
+import RModal from '../RModal';
+
 
 const App = () => (
   <div className={style.wrapper}>
@@ -34,6 +37,10 @@ const App = () => (
                 exact
                 render={() => <TableContainer />}
               />
+              <br />
+              <br />
+              <BModal />
+              <RModal />
               <br />
               <br />
               <ModalStatusContainer />

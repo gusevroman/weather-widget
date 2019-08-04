@@ -26,3 +26,4 @@ class BootstrapModal extends Component {
 }
 
 export default connectModal({ name: 'bootstrap' })(BootstrapModal)
+
