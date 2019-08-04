@@ -9,7 +9,7 @@ class BootstrapModal extends Component {
     return (
         <Modal show={show}>
           <Modal.Header>
-            <Modal.Title>Hello</Modal.Title>
+            <Modal.Title>Hello!!!</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>

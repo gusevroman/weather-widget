@@ -7,12 +7,12 @@ const ModalStatus = (props) => {
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
     // const { id:recordStatus } = event.target;
-    const { activeRecordId:activeID } = props.modals;
+    const { activeRecordId:activeID } = props.other;
     let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
     props.updateStatusRecord(status, activeRecordIndex);
   };
 
-  let activeID = props.modals.activeRecordId;
+  let activeID = props.other.activeRecordId;
   let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
   let isActive;
   let city;

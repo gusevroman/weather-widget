@@ -1,20 +1,16 @@
-import React, { Component }  from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { show } from 'redux-modal';
+import React, { Component }  from 'react'; //
+import { bindActionCreators } from 'redux'; //
+import { connect } from 'react-redux'; //
+import { show } from 'redux-modal'; //
 import { Route } from 'react-router-dom';
+import { Button } from 'react-bootstrap'; //
 import FormTop from '../Form/Form';
 import NavigationContainer from '../Navigation/Container';
 import TableContainer from '../Table/Container';
 import ModalStatusContainer from '../ModalStatus/Container';
 import ModalChangeContainer from '../ModalChange/Container';
 import style from './style.module.css';
-import BModal from '../BModal';
-import RModal from '../RModal';
-
-
-import { Button } from 'react-bootstrap';
-import BootstrapModal from '../BootstrapModal';
+import BootstrapModal from '../BootstrapModal'; //
 
 
 class App extends Component {
@@ -52,8 +48,6 @@ class App extends Component {
               />
               <br />
               <br />
-              <BModal />
-              <RModal />
               <Button onClick={this.handleOpen('bootstrap')}>Redux-modal</Button>
               <BootstrapModal />
               <br />

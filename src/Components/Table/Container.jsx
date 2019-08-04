@@ -8,22 +8,21 @@ import {
   downRowRecord,
 } from '../../Redux/Actions/records';
 import {
-  //show,
-  hide,
-} from '../../Redux/Actions/modals';
+  showModal,
+} from '../../Redux/Actions/other';
 import Table from './Table';
 
 const mapStateToProps = state => ({
   records: state.records.records,
-  modals:  state.modals.modals,
+  other:   state.other,
 });
 const TableContainer = connect(mapStateToProps, {
   toggleIsFetching,
   changePositionRecord,
   upRowRecord,
   downRowRecord,
+  showModal,
   show,
-  hide,
 })(Table);
 
 export default TableContainer;

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, } from 'reactstrap';
 import TestModal from '../TestModal';
 import style from './style.module.css';
 
 const Table = (props) => {
-  // console.log(props.show);
+  console.log(props);
 
   const path = window.location.pathname;
   let { records: filtredRecords } = props;
@@ -36,12 +36,12 @@ const Table = (props) => {
   const showModalStatus = (event) => {
     const { id } = event.target.dataset;
     console.log(`Status. ID = ${id}`);
-    props.show('Status', id);
+    props.showModal('Status', id);
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
     console.log(`Message. ID = ${id}`);
-    props.show('Change', id);
+    props.showModal('Change', id);
   };
 
   const handleOpen = name => () => {
@@ -67,12 +67,12 @@ const Table = (props) => {
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
-          <Button color="danger" onClick={handleOpen('testmodal')}>clck</Button>
+          <Button color="danger" onClick={handleOpen('bootstrap')}>clck</Button>
           <TestModal />
         </td>
         <td
-          // onClick={showModalStatus}
-          onClick={handleOpen('bootstrap')}
+          onClick={showModalStatus}
+          // onClick={handleOpen('bootstrap')}
           key={`temperature_${record.id}`}
           data-id={record.id}
         >
