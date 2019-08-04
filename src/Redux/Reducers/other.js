@@ -19,7 +19,7 @@ const otherReducer = (state = initialState, action) => {
       };
     }
     case SHOW_MODAL: {
-      console.log(`Show modal ${action.name} for ID = ${action.id} `);
+      // console.log(`Show modal ${action.name} for ID = ${action.id} `);
       return {
         ...state,
         activeRecordId: action.id,

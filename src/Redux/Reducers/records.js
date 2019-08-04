@@ -1,9 +1,11 @@
 import {
   TOGGLE_IS_FETCHING,
-  CHANGE_POSITION_RECORD,
   UPDATE_STATUS_RECORD,
   UPDATE_TEMPERATURE,
   UPDATE_CITY,
+  MODAL_CHANGES_PREPARE,
+  MODAL_CHANGES_SAVE,
+  MODAL_CHANGES_CANCEL,
   UP_ROW_RECORD,
   DOWN_ROW_RECORD,
 } from '../Actions/records';
@@ -12,28 +14,30 @@ const initialState = {
   records: [
     {
       city:        'Test A',
-      temperature: 'Temperature test A',
+      temperature: 291.21,
       isActive:    true,
       position:    0,
       id:          1,
     },
     {
       city:        'Test B',
-      temperature: 'Temperature test B',
+      temperature: 255,
       isActive:    false,
       position:    1,
       id:          2,
     },
     {
       city:        'Test C',
-      temperature: 'Temperature test C',
+      temperature: 280.32,
       isActive:    true,
       position:    2,
       id:          3,
     },
   ],
-  recordsCount: 0,
-  isFetching:   false,
+  cityTemporaryName:         '',
+  temperatureTemporaryValue: 0,
+  recordsCount:              0,
+  isFetching:                false,
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -42,11 +46,6 @@ const recordsReducer = (state = initialState, action) => {
       return {
         ...state,
         // isFetching: true,
-      };
-    }
-    case CHANGE_POSITION_RECORD: {
-      return {
-        ...state,
       };
     }
     case UPDATE_STATUS_RECORD: {
@@ -69,17 +68,67 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case UPDATE_TEMPERATURE: {
-      console.log(`Record ID: ${action.id}`);
-      console.log(`New temperature: ${action.temperature}`);
-      return {
+      const index = action.activeRecordIndex;
+      const { temperature } = action;
+      console.log(`New temperature: ${temperature}`);
+      const stateCopy = {
         ...state,
+        records: [
+          ...state.records,
+        ],
+        temperatureTemporaryValue: temperature,
       };
+      return stateCopy;
     }
     case UPDATE_CITY: {
-      console.log(`Record ID: ${action.id}`);
-      console.log(`New city: ${action.city}`);
+      const index = action.activeRecordIndex;
+      const cityOriginal = action.city;
+      console.log(`New city: ${action.cityOriginal}`);
+      const stateCopy = {
+        ...state,
+        records: [
+          ...state.records,
+        ],
+        cityTemporaryName: cityOriginal,
+      };
+      // stateCopy.records[index].city = city;
+      return stateCopy;
+    }
+    case MODAL_CHANGES_PREPARE: {
+      const index = action.activeRecordIndex;
+      const city  = state.records[index].city;
+      const temperature  = state.records[index].temperature;
+      console.log(`MODAL_CHANGES_PREPARE. Index: ${index}, City: ${city}, T: ${temperature}`);
+      const stateCopy = {
+        ...state,
+        cityTemporaryName: city,
+        temperatureTemporaryValue: temperature,
+      };
+
+      return stateCopy;
+    }
+    case MODAL_CHANGES_SAVE: {
+      const index = action.activeRecordIndex;
+      console.log(`MODAL_CHANGES_SAVE. Index: ${index}, City: ${state.cityTemporaryName}, T: ${state.temperatureTemporaryValue}`);
+      const stateCopy = {
+        ...state,
+        records: [
+          ...state.records,
+        ],
+      };
+      stateCopy.records[index].city = stateCopy.cityTemporaryName;
+      stateCopy.records[index].temperature = stateCopy.temperatureTemporaryValue;
+      stateCopy.cityTemporaryName = '';
+      stateCopy.temperatureTemporaryValue = 0;
+
+      return stateCopy;
+    }
+    case MODAL_CHANGES_CANCEL: {
+      console.log('MODAL_CHANGES_CANCEL');
       return {
         ...state,
+        cityTemporaryName:         '',
+        temperatureTemporaryValue: 0,
       };
     }
     case UP_ROW_RECORD: {

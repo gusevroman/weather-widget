@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { show } from 'redux-modal';
 import {
   toggleIsFetching,
-  changePositionRecord,
   upRowRecord,
   downRowRecord,
+  modalChangesPrepare,
 } from '../../Redux/Actions/records';
 import {
   showModal,
@@ -18,9 +18,9 @@ const mapStateToProps = state => ({
 });
 const TableContainer = connect(mapStateToProps, {
   toggleIsFetching,
-  changePositionRecord,
   upRowRecord,
   downRowRecord,
+  modalChangesPrepare,
   showModal,
   show,
 })(Table);

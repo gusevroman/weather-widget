@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { connectModal } from 'redux-modal';
+import style from './style.module.css';
 
 const ModalStatus = (props) => {
-  const { show, handleHide, message, ttt } = props;
-
-  console.log(props.other);
+  const { show, handleHide, message/*, ttt*/ } = props;
 
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
@@ -13,6 +12,7 @@ const ModalStatus = (props) => {
     const { activeRecordId:activeID } = props.other;
     let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
     props.updateStatusRecord(status, activeRecordIndex);
+    handleHide('modalStatus');
   };
 
   let activeID = props.other.activeRecordId;
@@ -42,25 +42,30 @@ const ModalStatus = (props) => {
     newRecordStatus = 'active';
   }
 
-
   return (
     <Modal show={show} >
-      <Modal.Body>
-        <p>{ message }</p>
+      <Modal.Body className={`${style.modalBody}`}>
+        {/*<p>{ message }</p>*/}
         {/*<p>{ttt}</p>*/}
         <p>{stringFinal}</p>
       </Modal.Body>
 
       <Modal.Footer>
         <Button
-            outline
-            data-status={newRecordStatus}
-            onClick={updateStatusRecord}
-            color={buttonСolor}
+          outline
+          data-status={newRecordStatus}
+          onClick={updateStatusRecord}
+          color={buttonСolor}
+          variant={buttonСolor}
         >
           {buttonTextFinal}
         </Button>
-        <Button onClick={handleHide}>Отмена</Button>
+        <Button
+          onClick={handleHide}
+          className={`${style.close}`}
+        >
+          ×
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -1,0 +1,25 @@
+div .modalBody {
+  padding-top: 2.5rem;
+}
+button.close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  background-color: transparent !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  color: black !important;
+  border: none;
+  box-shadow:  none !important;
+}
+button.close:hover {
+  opacity: 1;
+  color: black;
+  border: none;
+}

@@ -5,6 +5,14 @@ import style from './style.module.css';
 const Table = (props) => {
   // console.log(props);
 
+  const handleOpen = name => () => {
+    console.log('!!!!!');
+    props.show(name, {
+      message: `This is a ${name} modal`,
+      // ttt: 'Да!',
+    });
+  };
+
   const path = window.location.pathname;
   let { records: filtredRecords } = props;
   let buttonName = '';
@@ -17,24 +25,6 @@ const Table = (props) => {
   }
 
   const getIndex = id => props.records.findIndex(obj => (obj.id === +id));
-
-
-  const handleOpen = name => () => {
-    console.log('!!!!!');
-    props.show(name, {
-      message: `This is a ${name} modal`,
-      ttt: 'Да!',
-
-      // newRecordStatus:
-      // updateStatusRecord:
-      // buttonСolor:
-      // buttonTextFinal:
-
-
-    });
-  };
-
-
   const upRowRecord = (event) => {
     const { id } = event.target.dataset;
     const index = getIndex(id);
@@ -55,14 +45,16 @@ const Table = (props) => {
     props.showModal('Status', id);
     // handleOpen('modalStatus');
     props.show('modalStatus', {
-      message: `!!!!`,
+      message: `test`,
       // ttt: 'Да!',
     });
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
-    console.log(`Message. ID = ${id}`);
+    const index = getIndex(id);
+    // console.log(`Message. ID = ${id}`);
     props.showModal('Change', id);
+    props.modalChangesPrepare(index);
   };
 
   /* eslint react/jsx-one-expression-per-line: "off" */
@@ -78,22 +70,14 @@ const Table = (props) => {
     return (
       <tr key={record.id} className={`${style.tr}`}>
         <td
-          onClick={showModalStatus}
+          onClick={showModalChange}
           key={`city_${record.id}`}
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
-          <Button
-            outline
-            key={`test-btn_${record.id}`}
-            data-id={record.id}
-            onClick={showModalStatus}
-            className="ml-3"
-          >Status
-          </Button>
         </td>
         <td
-          onClick={showModalStatus}
+          onClick={showModalChange}
           key={`temperature_${record.id}`}
           data-id={record.id}
         >
@@ -122,7 +106,7 @@ const Table = (props) => {
             type="button"
             data-id={record.id}
             key={`btn-change_${record.id}`}
-            onClick={showModalChange}
+            onClick={showModalStatus}
             className={`btn btn-sm btn-outline btn-outline-${buttonColor}`}
           >
             {buttonName}

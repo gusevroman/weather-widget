@@ -1,27 +1,29 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
-import ModalChange from './ModalChange';
+import { show } from 'redux-modal';
 import {
   toggleIsFetching,
   updateTemperature,
   updateCity,
+  modalChangesSave,
+  modalChangesCancel,
 } from '../../Redux/Actions/records';
 import {
-  show,
-  hide,
-} from '../../Redux/Actions/modals';
+  showModal,
+} from '../../Redux/Actions/other';
+import ModalChange from './ModalChange';
 
 const mapStateToProps = state => ({
   records: state.records,
-  modals:  state.modals,
   other:   state.other,
 });
 const ModalChangeContainer = connect(mapStateToProps, {
   toggleIsFetching,
   updateTemperature,
   updateCity,
+  modalChangesSave,
+  modalChangesCancel,
   show,
-  hide,
 })(ModalChange);
 
 export default ModalChangeContainer;
