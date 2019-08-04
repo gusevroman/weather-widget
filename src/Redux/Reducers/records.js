@@ -98,7 +98,7 @@ const recordsReducer = (state = initialState, action) => {
       const index = action.activeRecordIndex;
       const city  = state.records[index].city;
       const temperature  = state.records[index].temperature;
-      console.log(`MODAL_CHANGES_PREPARE. Index: ${index}, City: ${city}, T: ${temperature}`);
+      // console.log(`MODAL_CHANGES_PREPARE. Index: ${index}, City: ${city}, T: ${temperature}`);
       const stateCopy = {
         ...state,
         actualRecordIndexTemporary: index,
