@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
-import ModalStatus from './ModalStatus';
+import { show } from 'redux-modal';
 import {
   toggleIsFetching,
   updateStatusRecord,
@@ -8,6 +8,7 @@ import {
 import {
   showModal,
 } from '../../Redux/Actions/other';
+import ModalStatus from './ModalStatus';
 
 const mapStateToProps = state => ({
   records: state.records,
@@ -17,6 +18,7 @@ const ModalStatusContainer = connect(mapStateToProps, {
   toggleIsFetching,
   updateStatusRecord,
   showModal,
+  show,
 })(ModalStatus);
 
 export default ModalStatusContainer;

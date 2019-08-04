@@ -1,7 +1,6 @@
-import React from 'react';
-import {
-  Button, Form,
-} from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { connectModal } from 'redux-modal';
 
 const ModalStatus = (props) => {
   const updateStatusRecord = (event) => {
@@ -39,22 +38,28 @@ const ModalStatus = (props) => {
     newRecordStatus = 'active';
   }
 
+  const { show, handleHide, message } = props;
+
   return (
-    <>
-      <h4>Модальное окно 1</h4>
-      <div className="border border-primary rounded py-4 px-4">
+    <Modal show={show} >
+      <Modal.Body>
+        <p>{ message }</p>
         <p>{stringFinal}</p>
+      </Modal.Body>
+
+      <Modal.Footer>
         <Button
-          outline
-          data-status={newRecordStatus}
-          onClick={updateStatusRecord}
-          color={buttonСolor}
+            outline
+            data-status={newRecordStatus}
+            onClick={updateStatusRecord}
+            color={buttonСolor}
         >
           {buttonTextFinal}
         </Button>
-      </div>
-    </>
+        <Button onClick={handleHide}>Отмена</Button>
+      </Modal.Footer>
+    </Modal>
   );
-};
+}
 
-export default ModalStatus;
+export default connectModal({ name: 'modalStatus' })(ModalStatus);

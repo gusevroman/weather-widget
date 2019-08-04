@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Modal, } from 'reactstrap';
-import TestModal from '../TestModal';
+import { Button } from 'reactstrap';
 import style from './style.module.css';
 
 const Table = (props) => {
@@ -61,18 +60,16 @@ const Table = (props) => {
     return (
       <tr key={record.id} className={`${style.tr}`}>
         <td
-          // onClick={showModalStatus}
-          // onClick={handleOpen('bootstrap')}
+          onClick={showModalStatus}
           key={`city_${record.id}`}
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
-          <Button color="danger" onClick={handleOpen('bootstrap')}>clck</Button>
-          <TestModal />
+          <Button outline onClick={handleOpen('modalStatus')} className="ml-3">Status</Button>
+          <Button outline onClick={handleOpen('bootstrap')} className="ml-3">test 2</Button>
         </td>
         <td
           onClick={showModalStatus}
-          // onClick={handleOpen('bootstrap')}
           key={`temperature_${record.id}`}
           data-id={record.id}
         >
@@ -86,7 +83,7 @@ const Table = (props) => {
             onClick={upRowRecord}
             className="btn btn-sm btn-outline-secondary"
           >
-            Вверх
+            &uarr;
           </button>
           <button
             type="button"
@@ -95,7 +92,7 @@ const Table = (props) => {
             onClick={downRowRecord}
             className="btn btn-sm btn-outline-secondary"
           >
-            Вниз
+            &darr;
           </button>
           <button
             type="button"
