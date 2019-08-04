@@ -34,10 +34,11 @@ const initialState = {
       id:          3,
     },
   ],
-  cityTemporaryName:         '',
-  temperatureTemporaryValue: 0,
-  recordsCount:              0,
-  isFetching:                false,
+  actualRecordIndexTemporary: -1,
+  cityTemporaryName:          '',
+  temperatureTemporaryValue:  '',
+  recordsCount:               0,
+  isFetching:                 false,
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -70,7 +71,7 @@ const recordsReducer = (state = initialState, action) => {
     case UPDATE_TEMPERATURE: {
       const index = action.activeRecordIndex;
       const { temperature } = action;
-      console.log(`New temperature: ${temperature}`);
+      // console.log(`New temperature: ${temperature}`);
       const stateCopy = {
         ...state,
         records: [
@@ -81,9 +82,8 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case UPDATE_CITY: {
-      const index = action.activeRecordIndex;
       const cityOriginal = action.city;
-      console.log(`New city: ${action.cityOriginal}`);
+      // console.log(`New city: ${cityOriginal}`);
       const stateCopy = {
         ...state,
         records: [
@@ -101,8 +101,9 @@ const recordsReducer = (state = initialState, action) => {
       console.log(`MODAL_CHANGES_PREPARE. Index: ${index}, City: ${city}, T: ${temperature}`);
       const stateCopy = {
         ...state,
-        cityTemporaryName: city,
-        temperatureTemporaryValue: temperature,
+        actualRecordIndexTemporary: index,
+        cityTemporaryName:          city,
+        temperatureTemporaryValue:  temperature,
       };
 
       return stateCopy;
@@ -127,8 +128,9 @@ const recordsReducer = (state = initialState, action) => {
       console.log('MODAL_CHANGES_CANCEL');
       return {
         ...state,
-        cityTemporaryName:         '',
-        temperatureTemporaryValue: 0,
+        actualRecordIndexTemporary: -1,
+        cityTemporaryName:          '',
+        temperatureTemporaryValue:  0,
       };
     }
     case UP_ROW_RECORD: {

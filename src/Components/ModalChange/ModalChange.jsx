@@ -15,17 +15,40 @@ const ModalChange = (props) => {
 
   let activeID = props.other.activeRecordId;
   let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
-  let city = props.records.cityTemporaryName;
+  let cityInput = props.records.cityTemporaryName;
   let temperatureInput = props.records.temperatureTemporaryValue;
+
+  let isButtonDisabled = true;
+  if (activeRecordIndex >= 0) {
+    const isContentChanged = (keyNameTemporary, keyName) => {
+      if ((props.records[keyNameTemporary] == props.records.records[activeRecordIndex][keyName])){
+        return false;
+      }
+      return true;
+    };
+    const isEmpty = (keyNameTemporary) => {
+      if (props.records[keyNameTemporary] === '') {
+        return false;
+      }
+      return true;
+    };
+
+    if (isContentChanged('cityTemporaryName', 'city') || isContentChanged('temperatureTemporaryValue', 'temperature')
+    ) {
+      isButtonDisabled = false;
+    }
+    if (!isEmpty('cityTemporaryName') || !isEmpty('temperatureTemporaryValue')) {
+      isButtonDisabled = true;
+    }
+  }
 
   const updateCity = (event) => {
     const city = event.target.value;
-    console.log(`Новый город: ${city}`);
     props.updateCity(city, activeRecordIndex);
   };
   const updateTemperature = (event) => {
     const temperature = event.target.value;
-    console.log(`Новая температура: ${temperature}`);
+    // console.log(`Новая температура: ${temperature}`);
     props.updateTemperature(temperature, activeRecordIndex);
   };
   const recordChangesSubmit = (event) => {
@@ -71,7 +94,7 @@ const ModalChange = (props) => {
               type="text"
               onChange={updateCity}
               // placeholder={city}
-              value={city}
+              value={cityInput}
           />
           {/*<Label for="cityInputModal" hidden>Город</Label>
           <Input
@@ -106,6 +129,7 @@ const ModalChange = (props) => {
           <div className="col-12 text-center">
             <Button
               // outline
+              disabled={isButtonDisabled}
               type="submit"
               color="success"
               variant="success"
