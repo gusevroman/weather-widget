@@ -12,7 +12,7 @@ import {
 
 const mapStateToProps = state => ({
   records: state.records,
-  modals:  state.modal,
+  modals:  state.modals,
   other:   state.other,
 });
 const ModalStatusContainer = connect(mapStateToProps, {

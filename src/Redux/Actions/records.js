@@ -30,11 +30,11 @@ export const updateCity           = (city, id) => ({
   city,
   id,
 });
-export const upRowRecord          = id => ({
+export const upRowRecord          = index => ({
   type: UP_ROW_RECORD,
-  id,
+  index,
 });
-export const downRowRecord        = id => ({
+export const downRowRecord        = index => ({
   type: DOWN_ROW_RECORD,
-  id,
+  index,
 });

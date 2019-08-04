@@ -1,8 +1,10 @@
 import React from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import TestModal from '../TestModal';
 import style from './style.module.css';
 
 const Table = (props) => {
-  // console.log(props);
+  // console.log(props.show);
 
   const path = window.location.pathname;
   let { records: filtredRecords } = props;
@@ -15,15 +17,21 @@ const Table = (props) => {
     filtredRecords = props.records.filter(obj => (obj.isActive !== true));
   }
 
+  const getIndex = id => props.records.findIndex(obj => (obj.id === +id));
+
   const upRowRecord = (event) => {
-    const { data:id } = event.target;
-    console.log(id);
-    props.upRowRecord(id);
+    const { id } = event.target.dataset;
+    const index = getIndex(id);
+    console.log(`ID: ${id}`);
+    console.log(`Index: ${index}`);
+    props.upRowRecord(index);
   };
   const downRowRecord = (event) => {
-    const { data:id } = event.target;
-    console.log(id);
-    props.downRowRecord(1);
+    const { id } = event.target.dataset;
+    const index = getIndex(id);
+    console.log(`ID: ${id}`);
+    console.log(`Index: ${index}`);
+    props.downRowRecord(index);
   };
   const showModalStatus = (event) => {
     const { id } = event.target.dataset;
@@ -34,6 +42,10 @@ const Table = (props) => {
     const { id } = event.target.dataset;
     console.log(`Message. ID = ${id}`);
     props.show('Change', id);
+  };
+
+  const handleOpen = name => () => {
+    props.show(name, { message: `This is a ${name} modal` });
   };
 
   /* eslint react/jsx-one-expression-per-line: "off" */
@@ -49,14 +61,18 @@ const Table = (props) => {
     return (
       <tr key={record.id} className={`${style.tr}`}>
         <td
-          onClick={showModalStatus}
+          // onClick={showModalStatus}
+          // onClick={handleOpen('bootstrap')}
           key={`city_${record.id}`}
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
+          <Button color="danger" onClick={handleOpen('testmodal')}>clck</Button>
+          <TestModal />
         </td>
         <td
-          onClick={showModalStatus}
+          // onClick={showModalStatus}
+          onClick={handleOpen('bootstrap')}
           key={`temperature_${record.id}`}
           data-id={record.id}
         >

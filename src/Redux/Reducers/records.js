@@ -83,16 +83,45 @@ const recordsReducer = (state = initialState, action) => {
       };
     }
     case UP_ROW_RECORD: {
-      console.log('UP');
-      return {
-        ...state,
-      };
+      const from = action.index;
+      const to = from - 1;
+      let stateCopy;
+
+      if (from > 0) {
+        stateCopy = {
+          ...state,
+          records: [
+            ...state.records,
+          ],
+        };
+        [stateCopy.records[from], stateCopy.records[to]] = [stateCopy.records[to], stateCopy.records[from]];
+      } else {
+        stateCopy = {
+          ...state,
+        };
+      }
+      return stateCopy;
     }
     case DOWN_ROW_RECORD: {
-      console.log('DOWN');
-      return {
-        ...state,
-      };
+      const lastIndex = (state.records.length - 1);
+      const from = action.index;
+      const to = from + 1;
+      let stateCopy;
+
+      if (from < lastIndex) {
+        stateCopy = {
+          ...state,
+          records: [
+            ...state.records,
+          ],
+        };
+        [stateCopy.records[from], stateCopy.records[to]] = [stateCopy.records[to], stateCopy.records[from]];
+      } else {
+        stateCopy = {
+          ...state,
+        };
+      }
+      return stateCopy;
     }
     default:
       return state;
