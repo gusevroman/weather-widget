@@ -18,8 +18,6 @@ const ModalChange = (props) => {
   let city = props.records.cityTemporaryName;
   let temperatureInput = props.records.temperatureTemporaryValue;
 
-  // console.log(`activeRecordIndex: ${activeRecordIndex}`);
-
   const updateCity = (event) => {
     const city = event.target.value;
     console.log(`Новый город: ${city}`);
@@ -50,7 +48,7 @@ const ModalChange = (props) => {
     }
   };
   const modalChangesCancel = () => {
-    console.log('CANCEL')
+    console.log('CANCEL');
     props.modalChangesCancel();
   };
 
