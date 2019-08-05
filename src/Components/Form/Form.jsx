@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 const FormTop = (props) => {
-  // console.log(props);
+  console.log(props.records.isRequestError);
 
   let cityInput = props.records.cityRequestName;
   const updateCity = (event) => {
@@ -18,6 +18,14 @@ const FormTop = (props) => {
   const getWeather = () => {
     props.getWeather(cityInput);
   };
+  const formSubmit = (event) => {
+    event.preventDefault();
+    getWeather();
+  };
+  if(props.records.isRequestError) {
+    alert('Ошибка.\n\nВозможно вы неверно ввели название города.\nВ случае необходимости - свяжитесь с администратором.');
+    props.setErrorStatus(false);
+  }
 
   let isButtonDisabled = true;
   if (cityInput !== '') {
@@ -26,7 +34,11 @@ const FormTop = (props) => {
 
   return (
     <>
-      <Form inline id="formTop">
+      <Form
+        inline
+        id="formTop"
+        onSubmit={formSubmit}
+      >
         <FormGroup className="col-12 col-md-8 col-lg-9 m-0">
           <Label for="cityInputTop" hidden>Город</Label>
           <Input
@@ -40,7 +52,7 @@ const FormTop = (props) => {
         </FormGroup>
         <div className="col-12 col-md-4 col-lg-3 mt-2 mt-md-0">
           <Button
-            outline
+            outline={true}
             color="primary"
             disabled={isButtonDisabled}
             className="col-12"

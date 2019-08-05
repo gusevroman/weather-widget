@@ -5,9 +5,6 @@ import {
   toggleIsFetching,
   updateStatusRecord,
 } from '../../Redux/Actions/records';
-import {
-  showModal,
-} from '../../Redux/Actions/other';
 import ModalStatus from './ModalStatus';
 
 const mapStateToProps = state => ({
@@ -17,7 +14,6 @@ const mapStateToProps = state => ({
 const ModalStatusContainer = connect(mapStateToProps, {
   toggleIsFetching,
   updateStatusRecord,
-  showModal,
   show,
 })(ModalStatus);
 

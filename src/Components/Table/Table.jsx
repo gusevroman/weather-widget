@@ -3,16 +3,6 @@ import { Button } from 'reactstrap';
 import style from './style.module.css';
 
 const Table = (props) => {
-  // console.log(props);
-
-  const handleOpen = name => () => {
-    console.log('!!!!!');
-    props.show(name, {
-      message: `This is a ${name} modal`,
-      // ttt: 'Да!',
-    });
-  };
-
   const path = window.location.pathname;
   let { records: filtredRecords } = props;
   let buttonName = '';
@@ -43,17 +33,17 @@ const Table = (props) => {
     const { id } = event.target.dataset;
     console.log(`Status. ID = ${id}`);
     props.showModal('Status', id);
-    // handleOpen('modalStatus');
     props.show('modalStatus', {
-      message: `test`,
+      // message: `test`,
       // ttt: 'Да!',
     });
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
     const index = getIndex(id);
-    // console.log(`Message. ID = ${id}`);
+    console.log(`Change. ID = ${id}`);
     props.showModal('Change', id);
+    props.show('modalChange');
     props.modalChangesPrepare(index);
   };
 
@@ -122,7 +112,7 @@ const Table = (props) => {
         <thead className={`${style.thead} thead-light`}>
           <tr>
             <th>Город</th>
-            <th>Температура</th>
+            <th>Температура &#8451;</th>
             <th>&nbsp;</th>
           </tr>
         </thead>

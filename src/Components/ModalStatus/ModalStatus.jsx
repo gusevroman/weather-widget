@@ -4,7 +4,7 @@ import { connectModal } from 'redux-modal';
 import style from './style.module.css';
 
 const ModalStatus = (props) => {
-  const { show, handleHide, message/*, ttt*/ } = props;
+  const { show, handleHide/* , message, ttt */ } = props;
 
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
@@ -42,17 +42,18 @@ const ModalStatus = (props) => {
     newRecordStatus = 'active';
   }
 
+  /* eslint react/jsx-one-expression-per-line: "off" */
   return (
-    <Modal show={show} >
+    <Modal show={show}>
       <Modal.Body className={`${style.modalBody}`}>
-        {/*<p>{ message }</p>*/}
-        {/*<p>{ttt}</p>*/}
+        {/* <p>{ message }</p> */}
+        {/* <p>{ttt}</p> */}
         <p>{stringFinal}</p>
       </Modal.Body>
 
       <Modal.Footer>
         <Button
-          outline
+          outline={true}
           data-status={newRecordStatus}
           onClick={updateStatusRecord}
           color={buttonСolor}

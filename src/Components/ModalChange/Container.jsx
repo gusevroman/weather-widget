@@ -8,9 +8,6 @@ import {
   modalChangesSave,
   modalChangesCancel,
 } from '../../Redux/Actions/records';
-import {
-  showModal,
-} from '../../Redux/Actions/other';
 import ModalChange from './ModalChange';
 
 const mapStateToProps = state => ({

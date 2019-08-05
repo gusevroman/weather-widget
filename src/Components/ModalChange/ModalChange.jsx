@@ -9,19 +9,21 @@ import {
   // FormText,
 // } from 'reactstrap';
 } from 'react-bootstrap';
+import { connectModal } from 'redux-modal';
+import style from "../ModalStatus/style.module.css";
 
 const ModalChange = (props) => {
-  const { show, handleHide, message, ttt } = props;
+  const { show, handleHide } = props;
 
-  let activeID = props.other.activeRecordId;
-  let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
-  let cityInput = props.records.cityTemporaryName;
-  let temperatureInput = props.records.temperatureTemporaryValue;
+  const activeID = props.other.activeRecordId;
+  const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
+  const cityInput = props.records.cityTemporaryName;
+  const temperatureInput = props.records.temperatureTemporaryValue;
 
   let isButtonDisabled = true;
   if (activeRecordIndex >= 0) {
     const isContentChanged = (keyNameTemporary, keyName) => {
-      if ((props.records[keyNameTemporary] == props.records.records[activeRecordIndex][keyName])){
+      if ((props.records[keyNameTemporary] == props.records.records[activeRecordIndex][keyName])) {
         return false;
       }
       return true;
@@ -51,109 +53,105 @@ const ModalChange = (props) => {
     // console.log(`Новая температура: ${temperature}`);
     props.updateTemperature(temperature, activeRecordIndex);
   };
-  const recordChangesSubmit = (event) => {
-    event.preventDefault();
-    /*
-    const { city }        = this.props.records;
-    const { temperature } = this.props.records;
-    if (true) {
-      updateCity(city);
-    }
-    if (true) {
-      updateTemperature(temperature);
-    }
-    */
-  };
   const modalChangesSave = (event) => {
     event.preventDefault();
-    if (true) {
-      props.modalChangesSave(activeRecordIndex);
-    }
+    props.modalChangesSave(activeRecordIndex);
+    handleHide('modalChange');
   };
   const modalChangesCancel = () => {
     console.log('CANCEL');
     props.modalChangesCancel();
+    handleHide('modalChange');
+  };
+  const recordChangesSubmit = (event) => {
+    event.preventDefault();
+    modalChangesSave(event);
   };
 
+  /* eslint react/jsx-one-expression-per-line: "off" */
   return (
-    <>
-      <br />
-      <br />
-      <h4>Модальное окно 2</h4>
+    <Modal show={show}>
       <Form
         id="formChange"
         inline
         onSubmit={recordChangesSubmit}
         className="border border-primary rounded py-4 px-2"
       >
-        <FormGroup className="col-12 col-md-6 mb-2 mb-md-0">
-          <Form.Label hidden>Город</Form.Label>
-          <Form.Control
+        <Modal.Body className={`${style.modalBody}`}>
+          <FormGroup className="col-12 col-md-6 mb-2 mb-md-0">
+            <Form.Label hidden>Город</Form.Label>
+            <Form.Control
               className="col-12"
               id="cityInputModal"
               type="text"
               onChange={updateCity}
               // placeholder={city}
               value={cityInput}
-          />
-          {/*<Label for="cityInputModal" hidden>Город</Label>
-          <Input
-            className="col-12"
-            id="cityInputModal"
-            type="text"
-            onChange={updateCity}
-            // placeholder={city}
-            value={city}
-          />*/}
-        </FormGroup>
-        <FormGroup className="col-12 col-md-6">
-          <Form.Label hidden>Температура</Form.Label>
-          <Form.Control
+            />
+            {/*
+            <Label for="cityInputModal" hidden>Город</Label>
+            <Input
+              className="col-12"
+              id="cityInputModal"
+              type="text"
+              onChange={updateCity}
+              // placeholder={city}
+              value={city}
+            />
+            */}
+          </FormGroup>
+          <FormGroup className="col-12 col-md-6">
+            <Form.Label hidden>Температура</Form.Label>
+            <Form.Control
               className="col-12"
               id="temperatureInputModal"
               // type="number"
               type="text"
               onChange={updateTemperature}
               value={temperatureInput}
-          />
-          {/*<Label for="temperatureInputModal" hidden>Температура</Label>
-          <Input
-            className="col-12"
-            type="number"
-            //onChange={onNewTaskTextChange}
-            placeholder={temperatureInputModal}
-          />*/}
-          {/*<FormText>&#8451;</FormText>*/}
-        </FormGroup>
-        <div className="row justify-content-center mt-0 mt-md-2 col-12 col-sm-6 mx-auto mt-2 mt-md-4">
-          <div className="col-12 text-center">
-            <Button
-              // outline
-              disabled={isButtonDisabled}
-              type="submit"
-              color="success"
-              variant="success"
-              className="col-12 col-md-5 mb-2 mb-md-0 mr-0 mr-md-2"
-              onClick={modalChangesSave}
-            >
-              Сохранить
-            </Button>
-            <Button
-              // outline
-              color="danger"
-              variant="danger"
-              className="col-12 col-md-5"
-              onClick={modalChangesCancel}
-            >
-              Отменить
-            </Button>
+            />
+            {/*
+            <Label for="temperatureInputModal" hidden>Температура</Label>
+            <Input
+              className="col-12"
+              type="number"
+              //onChange={onNewTaskTextChange}
+              placeholder={temperatureInputModal}
+            />
+            */}
+          </FormGroup>
+        </Modal.Body>
+
+        <Modal.Footer>
+          {/*<div className="row justify-content-center mt-0 mt-md-2 col-12 col-sm-6 mx-auto mt-2 mt-md-4">*/}
+          <div className="row justify-content-center col-12 ">
+            <div className="col-12 text-center">
+              <Button
+                  // outline
+                  disabled={isButtonDisabled}
+                  type="submit"
+                  color="success"
+                  variant="success"
+                  className="col-12 col-md-5 mb-2 mb-md-0 mr-0 mr-md-2"
+                  onClick={modalChangesSave}
+              >
+                Сохранить
+              </Button>
+              <Button
+                  // outline
+                  color="danger"
+                  variant="danger"
+                  className="col-12 col-md-5"
+                  onClick={modalChangesCancel}
+              >
+                Отменить
+              </Button>
+            </div>
           </div>
-        </div>
+        </Modal.Footer>
       </Form>
-      <br />
-      <br />
-    </>
+    </Modal>
   );
 };
 
-export default ModalChange;
+export default connectModal({ name: 'modalChange' })(ModalChange);
