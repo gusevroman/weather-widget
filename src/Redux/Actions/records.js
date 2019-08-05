@@ -1,6 +1,5 @@
 import weatherAPI from '../../API/api';
 
-export const TOGGLE_IS_FETCHING    = 'TOGGLE-IS-FETCHING';
 export const UPDATE_STATUS_RECORD  = 'UPDATE-STATUS-RECORD';
 export const UPDATE_TEMPERATURE    = 'UPDATE-TEMPERATURE';
 export const UPDATE_CITY           = 'UPDATE-CITY';
@@ -12,10 +11,6 @@ export const DOWN_ROW_RECORD       = 'DOWN-ROW-RECORD';
 export const SET_RECORD            = 'SET-RECORD';
 export const SET_ERROR_STATUS      = 'SET_ERROR-STATUS';
 
-export const toggleIsFetching     = isFetching => ({
-  type: TOGGLE_IS_FETCHING,
-  isFetching,
-});
 export const updateStatusRecord   = (recordStatus, activeRecordIndex) => ({
   type: UPDATE_STATUS_RECORD,
   recordStatus,
@@ -62,11 +57,8 @@ export const setErrorStatus       = status => ({
 
 // Thunks
 export const getWeather          = cityName => (dispatch) => {
-  dispatch(toggleIsFetching(true));
-
   weatherAPI.getWeather(cityName)
     .then((data) => {
-      dispatch(toggleIsFetching(false));
       if (data.status !== 'error') {
         dispatch(setErrorStatus(false));
         console.log(data.main.temp);

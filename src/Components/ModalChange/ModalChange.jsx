@@ -75,14 +75,16 @@ const ModalChange = (props) => {
         id="formChange"
         inline
         onSubmit={recordChangesSubmit}
-        className="border border-primary rounded py-4 px-2"
+        // className="col-12"
       >
+        <Modal.Header className="col-12">
+          <Modal.Title>Редактирование записи</Modal.Title>
+        </Modal.Header>
         <Modal.Body className={`${style.modalBody}`}>
-          <FormGroup className="col-12 col-md-6 mb-2 mb-md-0">
+          <FormGroup className="mb-2">
             <Form.Label hidden>Город</Form.Label>
             <Form.Control
               className="col-12"
-              id="cityInputModal"
               type="text"
               onChange={updateCity}
               // placeholder={city}
@@ -100,11 +102,10 @@ const ModalChange = (props) => {
             />
             */}
           </FormGroup>
-          <FormGroup className="col-12 col-md-6">
+          <FormGroup className="mb-2">
             <Form.Label hidden>Температура</Form.Label>
             <Form.Control
               className="col-12"
-              id="temperatureInputModal"
               // type="number"
               type="text"
               onChange={updateTemperature}
@@ -122,32 +123,30 @@ const ModalChange = (props) => {
           </FormGroup>
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer className="col-12 d-flex flex-column flex-sm-row">
           {/*<div className="row justify-content-center mt-0 mt-md-2 col-12 col-sm-6 mx-auto mt-2 mt-md-4">*/}
-          <div className="row justify-content-center col-12 ">
-            <div className="col-12 text-center">
+          {/*<div className="row col-12 ">*/}
+            {/*<div className="col-12 text-center">*/}
               <Button
-                  // outline
-                  disabled={isButtonDisabled}
-                  type="submit"
-                  color="success"
-                  variant="success"
-                  className="col-12 col-md-5 mb-2 mb-md-0 mr-0 mr-md-2"
-                  onClick={modalChangesSave}
+                disabled={isButtonDisabled}
+                type="submit"
+                color="success"
+                variant="success"
+                className="col-12 col-sm-4 mb-2 mb-sm-0 mr-0 mr-sm-2"
+                onClick={modalChangesSave}
               >
                 Сохранить
               </Button>
               <Button
-                  // outline
-                  color="danger"
-                  variant="danger"
-                  className="col-12 col-md-5"
-                  onClick={modalChangesCancel}
+                color="danger"
+                variant="danger"
+                className="col-12 col-sm-4 ml-0"
+                onClick={modalChangesCancel}
               >
                 Отменить
               </Button>
-            </div>
-          </div>
+            {/*</div>*/}
+          {/*</div>*/}
         </Modal.Footer>
       </Form>
     </Modal>

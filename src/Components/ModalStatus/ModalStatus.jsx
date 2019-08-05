@@ -4,26 +4,20 @@ import { connectModal } from 'redux-modal';
 import style from './style.module.css';
 
 const ModalStatus = (props) => {
-  const { show, handleHide/* , message, ttt */ } = props;
+  const { show, handleHide } = props;
 
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
-    // const { id:recordStatus } = event.target;
     const { activeRecordId:activeID } = props.other;
     let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
     props.updateStatusRecord(status, activeRecordIndex);
     handleHide('modalStatus');
   };
 
-  let activeID = props.other.activeRecordId;
+  let activeID          = props.other.activeRecordId;
   let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
-  let isActive;
-  let city;
-  if (activeRecordIndex >= 0) {
-    city = props.records.records[activeRecordIndex].city;
-    isActive = props.records.records[activeRecordIndex].isActive;
-  }
-
+  let isActive          = props.records.records[activeRecordIndex].isActive;
+  let city              = props.records.records[activeRecordIndex].city;
   let stringFinal;
   let buttonTextFinal;
   let buttonСolor;

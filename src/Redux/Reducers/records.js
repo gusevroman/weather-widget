@@ -1,5 +1,4 @@
 import {
-  TOGGLE_IS_FETCHING,
   UPDATE_STATUS_RECORD,
   UPDATE_TEMPERATURE,
   UPDATE_CITY,
@@ -14,7 +13,13 @@ import {
 
 const initialState = {
   records: [
-
+    {
+      city: 'test',
+      temperature: 11.2,
+      isActive: true,
+      position: 0,
+      id: 123134234098,
+    }
   ],
   actualRecordIndexTemporary: -1,
   cityRequestName:            '',
@@ -27,12 +32,6 @@ const initialState = {
 
 const recordsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_IS_FETCHING: {
-      return {
-        ...state,
-        // isFetching: true,
-      };
-    }
     case UPDATE_STATUS_RECORD: {
       const index = action.activeRecordIndex;
       let isActive = true;
@@ -165,8 +164,8 @@ const recordsReducer = (state = initialState, action) => {
         city:        state.cityRequestName,
         temperature: action.record,
         isActive:    true,
-        position:    state.records.length,//
-        id:          date.getTime(),//
+        position:    state.records.length,
+        id:          date.getTime(),
       };
 
       console.log(newRecord);

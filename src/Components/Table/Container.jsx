@@ -2,7 +2,6 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import { show } from 'redux-modal';
 import {
-  toggleIsFetching,
   upRowRecord,
   downRowRecord,
   modalChangesPrepare,
@@ -17,7 +16,6 @@ const mapStateToProps = state => ({
   other:   state.other,
 });
 const TableContainer = connect(mapStateToProps, {
-  toggleIsFetching,
   upRowRecord,
   downRowRecord,
   modalChangesPrepare,
