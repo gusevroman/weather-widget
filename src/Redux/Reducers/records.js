@@ -14,27 +14,7 @@ import {
 
 const initialState = {
   records: [
-    {
-      city:        'Test A',
-      temperature: 291.21,
-      isActive:    true,
-      position:    0,
-      id:          1,
-    },
-    {
-      city:        'Test B',
-      temperature: 255,
-      isActive:    false,
-      position:    1,
-      id:          2,
-    },
-    {
-      city:        'Test C',
-      temperature: 280.32,
-      isActive:    true,
-      position:    2,
-      id:          3,
-    },
+
   ],
   actualRecordIndexTemporary: -1,
   cityRequestName:            '',
@@ -179,8 +159,27 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case SET_RECORD: {
+      let date = new Date();
       console.log(`Reducer: SET_RECORD (${action.record})`);
-      return state;
+      const newRecord = {
+        city:        state.cityRequestName,
+        temperature: action.record,
+        isActive:    true,
+        position:    state.records.length,//
+        id:          date.getTime(),//
+      };
+
+      console.log(newRecord);
+      const stateCopy = {
+        ...state,
+        records: [
+          ...state.records,
+        ],
+      };
+
+      stateCopy.records.push(newRecord);
+
+      return stateCopy;
     }
     case SET_ERROR_STATUS: {
       console.log(`Reducer: SET_ERROR_STATUS (${action.status})`);
