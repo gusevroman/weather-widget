@@ -44,7 +44,7 @@ const ModalChange = (props) => {
 
   const updateCity = (event) => {
     const city = event.target.value;
-    props.updateCity(city, activeRecordIndex);
+    props.updateCity(city, activeRecordIndex, 'modalChange');
   };
   const updateTemperature = (event) => {
     const temperature = event.target.value;

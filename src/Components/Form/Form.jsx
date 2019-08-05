@@ -10,8 +10,13 @@ import {
 const FormTop = (props) => {
   // console.log(props);
 
+  let cityInput = props.records.cityRequestName;
+  const updateCity = (event) => {
+    const city = event.target.value;
+    props.updateCity(city, -1, 'formRequest');
+  };
   const getWeather = () => {
-    props.getWeather('asdadas');
+    props.getWeather(cityInput);
   };
 
   return (
@@ -19,7 +24,14 @@ const FormTop = (props) => {
       <Form inline id="formTop">
         <FormGroup className="col-12 col-md-8 col-lg-9 m-0">
           <Label for="cityInputTop" hidden>Город</Label>
-          <Input className="col-12" id="cityInputTop" type="text" placeholder="Ведите название города (по-английски)"/>
+          <Input
+            id="cityInputTop"
+            type="text"
+            onChange={updateCity}
+            className="col-12"
+            value={cityInput}
+            placeholder="Ведите название города (по-английски)"
+          />
         </FormGroup>
         <div className="col-12 col-md-4 col-lg-3 mt-2 mt-md-0">
           <Button

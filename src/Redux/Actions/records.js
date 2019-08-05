@@ -37,10 +37,11 @@ export const modalChangesSave     = activeRecordIndex => ({
 export const modalChangesCancel   = () => ({
   type: MODAL_CHANGES_CANCEL,
 });
-export const updateCity           = (city, activeRecordIndex) => ({
+export const updateCity           = (city, activeRecordIndex, formName) => ({
   type: UPDATE_CITY,
   city,
   activeRecordIndex,
+  formName,
 });
 export const upRowRecord          = index => ({
   type: UP_ROW_RECORD,
@@ -65,7 +66,6 @@ export const getWeather          = cityName => (dispatch) => {
 
   weatherAPI.getWeather(cityName)
     .then((data) => {
-      console.log('ACTION');
       dispatch(toggleIsFetching(false));
       if (data.status !== 'error') {
         dispatch(setErrorStatus(false));

@@ -37,6 +37,7 @@ const initialState = {
     },
   ],
   actualRecordIndexTemporary: -1,
+  cityRequestName:            '',
   cityTemporaryName:          '',
   temperatureTemporaryValue:  '',
   recordsCount:               0,
@@ -85,15 +86,15 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case UPDATE_CITY: {
-      const cityOriginal = action.city;
-      // console.log(`New city: ${cityOriginal}`);
+      const cityFromForm = action.city;
       const stateCopy = {
         ...state,
-        records: [
-          ...state.records,
-        ],
-        cityTemporaryName: cityOriginal,
       };
+      if(action.formName == 'modalChange') {
+        stateCopy.cityTemporaryName = cityFromForm;
+      } else if (action.formName == 'formRequest') {
+        stateCopy.cityRequestName = cityFromForm;
+      }
       // stateCopy.records[index].city = city;
       return stateCopy;
     }
