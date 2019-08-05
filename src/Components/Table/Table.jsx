@@ -50,17 +50,18 @@ const Table = (props) => {
 
     /* eslint react/jsx-one-expression-per-line: "off" */
     return (
-      <tr key={record.id} className={`${style.tr}`}>
+      <tr
+        key={record.id}
+        className={`${style.tr}`}
+      >
         <td
           onClick={showModalChange}
-          key={`city_${record.id}`}
           data-id={record.id}
         >
           <span data-id={record.id}>{record.city}</span>
         </td>
         <td
           onClick={showModalChange}
-          key={`temperature_${record.id}`}
           data-id={record.id}
         >
           <span data-id={record.id}>{record.temperature}</span>
@@ -70,7 +71,6 @@ const Table = (props) => {
             outline
             type="button"
             data-id={record.id}
-            key={`btn-up_${record.id}`}
             onClick={upRowRecord}
             className="btn btn-sm btn-outline-secondary"
           >
@@ -80,7 +80,6 @@ const Table = (props) => {
             outline
             type="button"
             data-id={record.id}
-            key={`btn-down_${record.id}`}
             onClick={downRowRecord}
             className="btn btn-sm btn-outline-secondary"
           >
@@ -90,7 +89,7 @@ const Table = (props) => {
             outline
             type="button"
             data-id={record.id}
-            key={`btn-change_${record.id}`}
+            // key={`btn-change_${record.id}`}
             onClick={showModalStatus}
             className={`btn btn-sm btn-outline btn-outline-${buttonColor}`}
           >
