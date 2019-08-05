@@ -69,12 +69,11 @@ export const getWeather          = cityName => (dispatch) => {
       dispatch(toggleIsFetching(false));
       if (data.status !== 'error') {
         dispatch(setErrorStatus(false));
-        // dispatch(updateTotalTaskCount(data.message.total_task_count));
         console.log(data.main.temp);
         dispatch(setRecord(data.main.temp));
-      } else {
-        dispatch(setErrorStatus(true));
-        console.log('ERROR');
       }
+    })
+    .catch((error) => {
+      dispatch(setErrorStatus(true));
     });
 };

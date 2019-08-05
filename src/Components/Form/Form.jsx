@@ -19,6 +19,11 @@ const FormTop = (props) => {
     props.getWeather(cityInput);
   };
 
+  let isButtonDisabled = true;
+  if (cityInput !== '') {
+    isButtonDisabled = false;
+  }
+
   return (
     <>
       <Form inline id="formTop">
@@ -37,6 +42,7 @@ const FormTop = (props) => {
           <Button
             outline
             color="primary"
+            disabled={isButtonDisabled}
             className="col-12"
             onClick={getWeather}
           >

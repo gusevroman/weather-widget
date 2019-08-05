@@ -14,8 +14,8 @@ const weatherAPI = {
   getWeather(cityName) {
     return axiosBase.get(`weather?q=${cityName}&appid=${apiKey}&units=metric`)
       .then(response => response.data)
-      .catch(error => {
-        console.log(error.response);
+      .catch((error) => {
+        console.log(error.response.data);
       });
   },
 };
