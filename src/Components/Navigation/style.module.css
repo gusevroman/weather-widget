@@ -1,14 +1,26 @@
+.nav_parent {
+  border-bottom: 1px solid #dee2e6;
+}
 .nav_parent a {
   outline: none;
-  border-bottom: 1px dashed;
+  /*border-bottom: 1px dashed;*/
+  margin-bottom: -1px;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5;
+  color: #212529;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
 }
 .nav_parent a.active {
-  color: black !important;
-  text-decoration: none;
+  background-color: #fff;
+  color: #495057;
   cursor: default;
-  border-bottom-color: transparent;
+  border: 1px solid #dee2e6 !important;
+  border-bottom-color: white !important;
 }
 .nav_parent a:hover {
-  color: black;
+  /*color: black;*/
   text-decoration: none;
 }
