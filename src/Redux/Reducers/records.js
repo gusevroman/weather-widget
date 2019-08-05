@@ -41,6 +41,7 @@ const initialState = {
   temperatureTemporaryValue:  '',
   recordsCount:               0,
   isFetching:                 false,
+  isRequestError:             false,
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -182,7 +183,10 @@ const recordsReducer = (state = initialState, action) => {
     }
     case SET_ERROR_STATUS: {
       console.log(`Reducer: SET_ERROR_STATUS (${action.status})`);
-      return state;
+      return {
+          ...state,
+          isRequestError: action.status,
+      };
     }
     default:
       return state;

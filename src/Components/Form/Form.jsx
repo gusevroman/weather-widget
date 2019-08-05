@@ -8,10 +8,10 @@ import {
 } from 'reactstrap';
 
 const FormTop = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const getWeather = () => {
-    props.getWeather('London');
+    props.getWeather('asdadas');
   };
 
   return (

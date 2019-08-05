@@ -13,7 +13,10 @@ const axiosBase = axios.create({
 const weatherAPI = {
   getWeather(cityName) {
     return axiosBase.get(`weather?q=${cityName}&appid=${apiKey}`)
-      .then(response => response.data);
+      .then(response => response.data)
+      .catch(error => {
+        console.log(error.response);
+      });
   },
 };
 

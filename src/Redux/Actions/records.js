@@ -65,6 +65,7 @@ export const getWeather          = cityName => (dispatch) => {
 
   weatherAPI.getWeather(cityName)
     .then((data) => {
+      console.log('ACTION');
       dispatch(toggleIsFetching(false));
       if (data.status !== 'error') {
         dispatch(setErrorStatus(false));
