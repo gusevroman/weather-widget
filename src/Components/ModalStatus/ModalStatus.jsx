@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button } from 'reactstrap';
+import { Modal } from 'react-bootstrap';
 import { connectModal } from 'redux-modal';
 import style from './style.module.css';
 
@@ -9,22 +10,22 @@ const ModalStatus = (props) => {
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
     const { activeRecordId:activeID } = props.other;
-    let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
+    const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
     props.updateStatusRecord(status, activeRecordIndex);
     handleHide('modalStatus');
   };
 
-  let activeID          = props.other.activeRecordId;
-  let activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
-  let isActive          = props.records.records[activeRecordIndex].isActive;
-  let city              = props.records.records[activeRecordIndex].city;
+  const activeID          = props.other.activeRecordId;
+  const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
+  const isActive          = props.records.records[activeRecordIndex].isActive;
+  const city              = props.records.records[activeRecordIndex].city;
+  const path              = props.other.actualPath;
   let stringFinal;
   let buttonTextFinal;
   let buttonСolor;
   let newRecordStatus;
-  const { actualPath:path } = props.other;
 
-  if ((activeRecordIndex >= 0) && isActive) {
+  if (isActive) {
     stringFinal = `Удалить ${city} из списка?`;
     buttonTextFinal = 'Удалить';
     buttonСolor = 'danger';
@@ -40,14 +41,11 @@ const ModalStatus = (props) => {
   return (
     <Modal show={show}>
       <Modal.Body className={`${style.modalBody}`}>
-        {/* <p>{ message }</p> */}
-        {/* <p>{ttt}</p> */}
         <p>{stringFinal}</p>
       </Modal.Body>
-
       <Modal.Footer>
         <Button
-          outline={true}
+          outline
           data-status={newRecordStatus}
           onClick={updateStatusRecord}
           color={buttonСolor}
@@ -64,6 +62,6 @@ const ModalStatus = (props) => {
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 export default connectModal({ name: 'modalStatus' })(ModalStatus);

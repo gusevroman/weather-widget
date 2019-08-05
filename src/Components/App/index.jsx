@@ -1,9 +1,4 @@
-// import React  from 'react'; //
-import React  from 'react'; //
-// import { bindActionCreators } from 'redux'; //
-// import { connect } from 'react-redux'; //
-// import { show } from 'redux-modal'; //
-// import { Button } from 'react-bootstrap'; //
+import React  from 'react';
 import { Route } from 'react-router-dom';
 import FormContainer from '../Form/Container';
 import NavigationContainer from '../Navigation/Container';
@@ -39,11 +34,6 @@ const App = () => (
                 exact
                 render={() => <TableContainer />}
               />
-              {/*
-              <Button onClick={this.handleOpen('bootstrap')}>Redux-modal</Button>
-              <br />
-              <br />
-              */}
               <ModalStatusContainer />
               <ModalChangeContainer />
             </section>
