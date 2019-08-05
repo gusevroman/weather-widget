@@ -73,7 +73,7 @@ const Table = (props) => {
         >
           <span data-id={record.id}>{record.temperature}</span>
         </td>
-        <td>
+        <td className={style.tdButtons}>
           <button
             type="button"
             data-id={record.id}
@@ -112,7 +112,7 @@ const Table = (props) => {
         <thead className={`${style.thead} thead-light`}>
           <tr>
             <th>Город</th>
-            <th>Температура &#8451;</th>
+            <th>Температура&nbsp;&#8451;</th>
             <th>&nbsp;</th>
           </tr>
         </thead>

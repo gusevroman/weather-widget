@@ -9,8 +9,16 @@
   background-color: #f1f1f1;
 }
 .tr span {
+  color: rgba(0,0,0,0.7);
   border-bottom: 1px dashed;
+}
+
+.tr span:hover {
+  color: rgba(0,0,0,1);
 }
 .tr button {
   margin-right: 4px;
+}
+.tr .tdButtons {
+  min-width: 148px;
 }

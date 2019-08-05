@@ -10,7 +10,7 @@ const Navigation = (props) => {
 
   /* eslint react/jsx-one-expression-per-line: "off" */
   return (
-    <div className={`${style.nav_parent} mt-4`}>
+    <div className={`${style.nav_parent} col-12 mt-4`}>
       <NavLink
         to="/all"
         id="all"
