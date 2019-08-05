@@ -9,13 +9,13 @@ const ModalStatus = (props) => {
 
   const updateStatusRecord = (event) => {
     const { status } = event.target.dataset;
-    const { activeRecordId:activeID } = props.other;
+    const { activeRecordId:activeID } = props.records;
     const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
     props.updateStatusRecord(status, activeRecordIndex);
     handleHide('modalStatus');
   };
 
-  const activeID          = props.other.activeRecordId;
+  const activeID          = props.records.activeRecordId;
   const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
   const isActive          = props.records.records[activeRecordIndex].isActive;
   const city              = props.records.records[activeRecordIndex].city;

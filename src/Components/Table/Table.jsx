@@ -27,14 +27,13 @@ const Table = (props) => {
   };
   const showModalStatus = (event) => {
     const { id } = event.target.dataset;
-    props.showModal('Status', id);
+    props.setActiveRecordId(id);
     props.show('modalStatus', {});
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
     const index = getIndex(id);
-    console.log(`Change. ID = ${id}`);
-    props.showModal('Change', id);
+    props.setActiveRecordId(id);
     props.show('modalChange');
     props.modalChangesPrepare(index);
   };

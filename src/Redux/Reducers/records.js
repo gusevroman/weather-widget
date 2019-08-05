@@ -9,16 +9,16 @@ import {
   DOWN_ROW_RECORD,
   SET_RECORD,
   SET_ERROR_STATUS,
+  SET_ACTIVE_RECORD_ID,
 } from '../Actions/records';
 
 const initialState = {
   records:                   [],
+  activeRecordId:            -1,
   actualRecordIndex:         -1,
   cityRequestName:           '',
   cityTemporaryName:         '',
   temperatureTemporaryValue: '',
-  recordsCount:              0,
-  isFetching:                false,
   isRequestError:            false,
 };
 
@@ -170,6 +170,12 @@ const recordsReducer = (state = initialState, action) => {
       return {
         ...state,
         isRequestError: action.status,
+      };
+    }
+    case SET_ACTIVE_RECORD_ID: {
+      return {
+        ...state,
+        activeRecordId: action.id,
       };
     }
     default:

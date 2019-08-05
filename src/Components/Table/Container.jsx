@@ -5,10 +5,8 @@ import {
   upRowRecord,
   downRowRecord,
   modalChangesPrepare,
+  setActiveRecordId,
 } from '../../Redux/Actions/records';
-import {
-  showModal,
-} from '../../Redux/Actions/other';
 import Table from './Table';
 
 const mapStateToProps = state => ({
@@ -16,11 +14,11 @@ const mapStateToProps = state => ({
   other:   state.other,
 });
 const TableContainer = connect(mapStateToProps, {
+  show,
   upRowRecord,
   downRowRecord,
   modalChangesPrepare,
-  showModal,
-  show,
+  setActiveRecordId,
 })(Table);
 
 export default TableContainer;

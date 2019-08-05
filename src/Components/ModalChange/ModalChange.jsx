@@ -13,7 +13,7 @@ import style from '../ModalStatus/style.module.css';
 const ModalChange = (props) => {
   const { show, handleHide } = props;
 
-  const activeID          = props.other.activeRecordId;
+  const activeID          = props.records.activeRecordId;
   const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
   const cityInput         = props.records.cityTemporaryName;
   const temperatureInput  = props.records.temperatureTemporaryValue;

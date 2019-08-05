@@ -10,6 +10,7 @@ export const UP_ROW_RECORD         = 'UP-ROW-RECORD';
 export const DOWN_ROW_RECORD       = 'DOWN-ROW-RECORD';
 export const SET_RECORD            = 'SET-RECORD';
 export const SET_ERROR_STATUS      = 'SET_ERROR-STATUS';
+export const SET_ACTIVE_RECORD_ID  = 'SET-ACTIVE-RECORD-ID';
 
 export const updateStatusRecord   = (recordStatus, activeRecordIndex) => ({
   type: UPDATE_STATUS_RECORD,
@@ -53,6 +54,10 @@ export const setRecord            = record => ({
 export const setErrorStatus       = status => ({
   type: SET_ERROR_STATUS,
   status,
+});
+export const setActiveRecordId    = id => ({
+  type: SET_ACTIVE_RECORD_ID,
+  id,
 });
 
 // Thunks
