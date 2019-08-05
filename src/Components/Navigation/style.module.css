@@ -3,12 +3,12 @@
 }
 .nav_parent a {
   outline: none;
-  /*border-bottom: 1px dashed;*/
   margin-bottom: -1px;
-  font-size: 1rem !important;
+  font-size: 1rem;
   font-weight: 400 !important;
   line-height: 1.5;
   color: #212529;
+  border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   padding: 0.5rem 1rem;
@@ -17,8 +17,8 @@
   background-color: #fff;
   color: #495057;
   cursor: default;
-  border: 1px solid #dee2e6 !important;
-  border-bottom-color: white !important;
+  border: 1px solid #dee2e6;
+  border-bottom-color: white;
 }
 .nav_parent a:hover {
   /*color: black;*/

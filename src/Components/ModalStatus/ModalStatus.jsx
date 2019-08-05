@@ -45,7 +45,6 @@ const ModalStatus = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button
-          outline
           data-status={newRecordStatus}
           onClick={updateStatusRecord}
           color={buttonСolor}

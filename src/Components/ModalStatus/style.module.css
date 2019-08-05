@@ -9,13 +9,13 @@ button.close {
   min-width: 1.5rem;
   text-shadow: 0 1px 0 #fff;
   opacity: .5;
-  background-color: transparent !important;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
   padding: 0;
-  color: black !important;
   border: none;
+  background-color: transparent !important;
+  color: black !important;
   box-shadow:  none !important;
 }
 button.close:hover {

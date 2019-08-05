@@ -18,25 +18,17 @@ const Table = (props) => {
   const upRowRecord = (event) => {
     const { id } = event.target.dataset;
     const index = getIndex(id);
-    console.log(`ID: ${id}`);
-    console.log(`Index: ${index}`);
     props.upRowRecord(index);
   };
   const downRowRecord = (event) => {
     const { id } = event.target.dataset;
     const index = getIndex(id);
-    console.log(`ID: ${id}`);
-    console.log(`Index: ${index}`);
     props.downRowRecord(index);
   };
   const showModalStatus = (event) => {
     const { id } = event.target.dataset;
-    console.log(`Status. ID = ${id}`);
     props.showModal('Status', id);
-    props.show('modalStatus', {
-      // message: `test`,
-      // ttt: 'Да!',
-    });
+    props.show('modalStatus', {});
   };
   const showModalChange = (event) => {
     const { id } = event.target.dataset;
@@ -57,6 +49,7 @@ const Table = (props) => {
       buttonColor = 'success';
     }
 
+    /* eslint react/jsx-one-expression-per-line: "off" */
     return (
       <tr key={record.id} className={`${style.tr}`}>
         <td
@@ -74,7 +67,8 @@ const Table = (props) => {
           <span data-id={record.id}>{record.temperature}</span>
         </td>
         <td className={style.tdButtons}>
-          <button
+          <Button
+            outline
             type="button"
             data-id={record.id}
             key={`btn-up_${record.id}`}
@@ -82,8 +76,9 @@ const Table = (props) => {
             className="btn btn-sm btn-outline-secondary"
           >
             &uarr;
-          </button>
-          <button
+          </Button>
+          <Button
+            outline
             type="button"
             data-id={record.id}
             key={`btn-down_${record.id}`}
@@ -91,8 +86,9 @@ const Table = (props) => {
             className="btn btn-sm btn-outline-secondary"
           >
             &darr;
-          </button>
-          <button
+          </Button>
+          <Button
+            outline
             type="button"
             data-id={record.id}
             key={`btn-change_${record.id}`}
@@ -100,7 +96,7 @@ const Table = (props) => {
             className={`btn btn-sm btn-outline btn-outline-${buttonColor}`}
           >
             {buttonName}
-          </button>
+          </Button>
         </td>
       </tr>
     );
@@ -108,7 +104,10 @@ const Table = (props) => {
 
   return (
     <>
-      <table id="table" className="mt-5 col-12">
+      <table
+        id="table"
+        className="mt-5 col-12"
+      >
         <thead className={`${style.thead} thead-light`}>
           <tr>
             <th>Город</th>
