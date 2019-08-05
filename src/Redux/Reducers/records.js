@@ -12,22 +12,14 @@ import {
 } from '../Actions/records';
 
 const initialState = {
-  records: [
-    {
-      city: 'test',
-      temperature: 11.2,
-      isActive: true,
-      position: 0,
-      id: 123134234098,
-    }
-  ],
-  actualRecordIndexTemporary: -1,
-  cityRequestName:            '',
-  cityTemporaryName:          '',
-  temperatureTemporaryValue:  '',
-  recordsCount:               0,
-  isFetching:                 false,
-  isRequestError:             false,
+  records:                   [],
+  actualRecordIndex:         -1,
+  cityRequestName:           '',
+  cityTemporaryName:         '',
+  temperatureTemporaryValue: '',
+  recordsCount:              0,
+  isFetching:                false,
+  isRequestError:            false,
 };
 
 const recordsReducer = (state = initialState, action) => {
@@ -38,8 +30,6 @@ const recordsReducer = (state = initialState, action) => {
       if (action.recordStatus === 'deleted') {
         isActive = false;
       }
-      console.log(`Record index: ${index}`);
-      console.log(`New status is active? ${isActive}`);
 
       const stateCopy = {
         ...state,
@@ -52,14 +42,9 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case UPDATE_TEMPERATURE: {
-      const index = action.activeRecordIndex;
       const { temperature } = action;
-      // console.log(`New temperature: ${temperature}`);
       const stateCopy = {
         ...state,
-        records: [
-          ...state.records,
-        ],
         temperatureTemporaryValue: temperature,
       };
       return stateCopy;
@@ -69,22 +54,28 @@ const recordsReducer = (state = initialState, action) => {
       const stateCopy = {
         ...state,
       };
-      if(action.formName == 'modalChange') {
-        stateCopy.cityTemporaryName = cityFromForm;
-      } else if (action.formName == 'formRequest') {
-        stateCopy.cityRequestName = cityFromForm;
+      switch (action.formName) {
+        case 'modalChange': {
+          stateCopy.cityTemporaryName = cityFromForm;
+          break;
+        }
+        case 'formRequest': {
+          stateCopy.cityRequestName = cityFromForm;
+          break;
+        }
+        default: {
+          //
+        }
       }
-      // stateCopy.records[index].city = city;
       return stateCopy;
     }
     case MODAL_CHANGES_PREPARE: {
       const index = action.activeRecordIndex;
       const city  = state.records[index].city;
       const temperature  = state.records[index].temperature;
-      // console.log(`MODAL_CHANGES_PREPARE. Index: ${index}, City: ${city}, T: ${temperature}`);
       const stateCopy = {
         ...state,
-        actualRecordIndexTemporary: index,
+        actualRecordIndex: index,
         cityTemporaryName:          city,
         temperatureTemporaryValue:  temperature,
       };
@@ -93,7 +84,6 @@ const recordsReducer = (state = initialState, action) => {
     }
     case MODAL_CHANGES_SAVE: {
       const index = action.activeRecordIndex;
-      console.log(`MODAL_CHANGES_SAVE. Index: ${index}, City: ${state.cityTemporaryName}, T: ${state.temperatureTemporaryValue}`);
       const stateCopy = {
         ...state,
         records: [
@@ -108,17 +98,16 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case MODAL_CHANGES_CANCEL: {
-      console.log('MODAL_CHANGES_CANCEL');
       return {
         ...state,
-        actualRecordIndexTemporary: -1,
+        actualRecordIndex: -1,
         cityTemporaryName:          '',
         temperatureTemporaryValue:  0,
       };
     }
     case UP_ROW_RECORD: {
       const from = action.index;
-      const to = from - 1;
+      const to =   from - 1;
       let stateCopy;
 
       if (from > 0) {
@@ -138,8 +127,8 @@ const recordsReducer = (state = initialState, action) => {
     }
     case DOWN_ROW_RECORD: {
       const lastIndex = (state.records.length - 1);
-      const from = action.index;
-      const to = from + 1;
+      const from =      action.index;
+      const to =        from + 1;
       let stateCopy;
 
       if (from < lastIndex) {
@@ -158,8 +147,7 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case SET_RECORD: {
-      let date = new Date();
-      console.log(`Reducer: SET_RECORD (${action.record})`);
+      const date = new Date();
       const newRecord = {
         city:        state.cityRequestName,
         temperature: action.record,
@@ -167,8 +155,6 @@ const recordsReducer = (state = initialState, action) => {
         position:    state.records.length,
         id:          date.getTime(),
       };
-
-      console.log(newRecord);
       const stateCopy = {
         ...state,
         records: [
@@ -181,10 +167,9 @@ const recordsReducer = (state = initialState, action) => {
       return stateCopy;
     }
     case SET_ERROR_STATUS: {
-      console.log(`Reducer: SET_ERROR_STATUS (${action.status})`);
       return {
-          ...state,
-          isRequestError: action.status,
+        ...state,
+        isRequestError: action.status,
       };
     }
     default:

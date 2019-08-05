@@ -61,11 +61,10 @@ export const getWeather          = cityName => (dispatch) => {
     .then((data) => {
       if (data.status !== 'error') {
         dispatch(setErrorStatus(false));
-        console.log(data.main.temp);
         dispatch(setRecord(data.main.temp));
       }
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(setErrorStatus(true));
     });
 };

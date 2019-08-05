@@ -19,7 +19,6 @@ const ModalStatus = (props) => {
   const activeRecordIndex = props.records.records.findIndex(obj => (obj.id === +activeID));
   const isActive          = props.records.records[activeRecordIndex].isActive;
   const city              = props.records.records[activeRecordIndex].city;
-  const path              = props.other.actualPath;
   let stringFinal;
   let buttonTextFinal;
   let buttonСolor;
