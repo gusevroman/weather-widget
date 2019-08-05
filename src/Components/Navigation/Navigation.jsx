@@ -16,7 +16,7 @@ const Navigation = (props) => {
         id="all"
         onClick={pathChange}
         activeClassName={style.active}
-        className="font-weight-light mx-auto pr-3"
+        className="font-weight-light mr-3 d-inline-block"
       >
         Все
       </NavLink>
@@ -25,7 +25,7 @@ const Navigation = (props) => {
         id="active"
         onClick={pathChange}
         activeClassName={style.active}
-        className="font-weight-light mx-auto pr-3"
+        className="font-weight-light mr-3 d-inline-block"
       >
         Активные
       </NavLink>
@@ -34,7 +34,7 @@ const Navigation = (props) => {
         id="deleted"
         onClick={pathChange}
         activeClassName={style.active}
-        className="font-weight-light mx-auto"
+        className="font-weight-light mr-3 d-inline-block"
       >
         Удаленные
       </NavLink>

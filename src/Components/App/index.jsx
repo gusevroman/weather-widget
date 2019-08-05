@@ -5,7 +5,7 @@ import React, { Component }  from 'react'; //
 // import { show } from 'redux-modal'; //
 // import { Button } from 'react-bootstrap'; //
 import { Route } from 'react-router-dom';
-import FormTop from '../Form/Form';
+import FormContainer from '../Form/Container';
 import NavigationContainer from '../Navigation/Container';
 import TableContainer from '../Table/Container';
 import ModalStatusContainer from '../ModalStatus/Container';
@@ -28,7 +28,7 @@ class App extends Component {
           <div className="col-md-10 mt-5 mx-auto">
             <header>
               <h1 className="mb-5 mx-auto text-center">Температура в городах мира</h1>
-              <FormTop />
+              <FormContainer />
               <NavigationContainer />
             </header>
             <section>

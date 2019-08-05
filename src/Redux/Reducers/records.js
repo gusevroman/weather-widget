@@ -8,6 +8,8 @@ import {
   MODAL_CHANGES_CANCEL,
   UP_ROW_RECORD,
   DOWN_ROW_RECORD,
+  SET_RECORD,
+  SET_ERROR_STATUS,
 } from '../Actions/records';
 
 const initialState = {
@@ -173,6 +175,14 @@ const recordsReducer = (state = initialState, action) => {
         };
       }
       return stateCopy;
+    }
+    case SET_RECORD: {
+      console.log(`Reducer: SET_RECORD (${action.record})`);
+      return state;
+    }
+    case SET_ERROR_STATUS: {
+      console.log(`Reducer: SET_ERROR_STATUS (${action.status})`);
+      return state;
     }
     default:
       return state;

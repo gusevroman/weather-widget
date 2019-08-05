@@ -1,8 +1,14 @@
 .nav_parent a {
   outline: none;
+  border-bottom: 1px dashed;
 }
 .nav_parent a.active {
   color: black !important;
   text-decoration: none;
   cursor: default;
+  border-bottom-color: transparent;
+}
+.nav_parent a:hover {
+  color: black;
+  text-decoration: none;
 }
